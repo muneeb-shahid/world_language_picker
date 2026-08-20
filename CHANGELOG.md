@@ -1,3 +1,7 @@
+## 1.0.1
+
+- Fixed preview image/GIF rendering in README.
+
 ## 1.0.0
 
 - Initial release of `world_language_picker`.
