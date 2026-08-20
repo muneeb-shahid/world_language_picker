@@ -14,6 +14,7 @@ A modern, fast, zero-dependency Flutter language picker supporting **50+ world l
 ## Preview 🎬
 
 ![World Language Picker Demo](https://github.com/user-attachments/assets/b769a2ba-70e7-498b-a0d4-562fc72f2025)
+
 ---
 
 ## Features 🚀
