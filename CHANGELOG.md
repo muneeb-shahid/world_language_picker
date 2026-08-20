@@ -1,3 +1,7 @@
+## 1.0.2
+
+- Fix preview image display on pub.dev using GitHub raw content link.
+
 ## 1.0.1
 
 - Fixed preview image/GIF rendering in README.
