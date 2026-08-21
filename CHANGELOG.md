@@ -1,3 +1,8 @@
+## 1.0.3
+
+- Added `flagEmoji` getter / static helper for easy flag rendering in custom UIs.
+- Fixed selected language state update logic.
+
 ## 1.0.2
 
 - Fix preview image display on pub.dev using GitHub raw content link.

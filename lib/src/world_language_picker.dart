@@ -3,6 +3,15 @@ import 'data/language_data.dart';
 import 'models/language.dart';
 
 class WorldLanguagePicker {
+  static String getCountryFlagEmoji(String countryCode) {
+    if (countryCode.length != 2) return '';
+    final int firstLetter =
+        countryCode.toUpperCase().codeUnitAt(0) - 0x41 + 0x1F1E6;
+    final int secondLetter =
+        countryCode.toUpperCase().codeUnitAt(1) - 0x41 + 0x1F1E6;
+    return String.fromCharCode(firstLetter) + String.fromCharCode(secondLetter);
+  }
+
   static Future<Language?> showBottomSheet(
     BuildContext context, {
     Language? initialLanguage,
@@ -16,14 +25,15 @@ class WorldLanguagePicker {
       context: context,
       isScrollControlled: true,
       backgroundColor: Colors.transparent,
-      builder: (ctx) => _LanguagePickerSheet(
-        initialLanguage: initialLanguage,
-        title: title,
-        searchHint: searchHint,
-        primaryColor: primaryColor ?? Theme.of(context).primaryColor,
-        backgroundColor: backgroundColor ?? Colors.white,
-        borderRadius: borderRadius,
-      ),
+      builder:
+          (ctx) => _LanguagePickerSheet(
+            initialLanguage: initialLanguage,
+            title: title,
+            searchHint: searchHint,
+            primaryColor: primaryColor ?? Theme.of(context).primaryColor,
+            backgroundColor: backgroundColor ?? Colors.white,
+            borderRadius: borderRadius,
+          ),
     );
   }
 }
@@ -62,11 +72,12 @@ class _LanguagePickerSheetState extends State<_LanguagePickerSheet> {
 
   void _filterLanguages(String query) {
     setState(() {
-      _filteredLanguages = defaultWorldLanguages.where((lang) {
-        return lang.name.toLowerCase().contains(query.toLowerCase()) ||
-            lang.nativeName.toLowerCase().contains(query.toLowerCase()) ||
-            lang.code.toLowerCase().contains(query.toLowerCase());
-      }).toList();
+      _filteredLanguages =
+          defaultWorldLanguages.where((lang) {
+            return lang.name.toLowerCase().contains(query.toLowerCase()) ||
+                lang.nativeName.toLowerCase().contains(query.toLowerCase()) ||
+                lang.code.toLowerCase().contains(query.toLowerCase());
+          }).toList();
     });
   }
 
@@ -76,7 +87,8 @@ class _LanguagePickerSheetState extends State<_LanguagePickerSheet> {
       height: MediaQuery.of(context).size.height * 0.85,
       decoration: BoxDecoration(
         color: widget.backgroundColor,
-        borderRadius: widget.borderRadius ??
+        borderRadius:
+            widget.borderRadius ??
             const BorderRadius.vertical(top: Radius.circular(24)),
       ),
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
@@ -146,21 +158,25 @@ class _LanguagePickerSheetState extends State<_LanguagePickerSheet> {
                       vertical: 14,
                     ),
                     decoration: BoxDecoration(
-                      color: isSelected
-                          ? widget.primaryColor.withValues(alpha: 0.1)
-                          : const Color(0xFFF8FAFC),
+                      color:
+                          isSelected
+                              ? widget.primaryColor.withValues(alpha: 0.1)
+                              : const Color(0xFFF8FAFC),
                       borderRadius: BorderRadius.circular(16),
                       border: Border.all(
-                        color: isSelected
-                            ? widget.primaryColor
-                            : Colors.transparent,
+                        color:
+                            isSelected
+                                ? widget.primaryColor
+                                : Colors.transparent,
                         width: 1.5,
                       ),
                     ),
                     child: Row(
                       children: [
                         Text(
-                          _getCountryFlagEmoji(lang.countryCode),
+                          WorldLanguagePicker.getCountryFlagEmoji(
+                            lang.countryCode,
+                          ),
                           style: const TextStyle(fontSize: 22),
                         ),
                         const SizedBox(width: 16),
@@ -171,12 +187,14 @@ class _LanguagePickerSheetState extends State<_LanguagePickerSheet> {
                               lang.nativeName,
                               style: TextStyle(
                                 fontSize: 16,
-                                fontWeight: isSelected
-                                    ? FontWeight.w600
-                                    : FontWeight.w500,
-                                color: isSelected
-                                    ? widget.primaryColor
-                                    : Colors.black.withValues(alpha: 0.8),
+                                fontWeight:
+                                    isSelected
+                                        ? FontWeight.w600
+                                        : FontWeight.w500,
+                                color:
+                                    isSelected
+                                        ? widget.primaryColor
+                                        : Colors.black.withValues(alpha: 0.8),
                               ),
                             ),
                             Text(
@@ -209,11 +227,5 @@ class _LanguagePickerSheetState extends State<_LanguagePickerSheet> {
         ],
       ),
     );
-  }
-
-  String _getCountryFlagEmoji(String countryCode) {
-    final int firstLetter = countryCode.codeUnitAt(0) - 0x41 + 0x1F1E6;
-    final int secondLetter = countryCode.codeUnitAt(1) - 0x41 + 0x1F1E6;
-    return String.fromCharCode(firstLetter) + String.fromCharCode(secondLetter);
   }
 }

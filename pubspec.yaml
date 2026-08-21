@@ -1,6 +1,6 @@
 name: world_language_picker
 description: A customizable Flutter language picker supporting 50+ world languages with native emoji flags, instant search, and zero external dependencies.
-version: 1.0.2
+version: 1.0.3
 homepage: https://github.com/muneeb-shahid/world_language_picker
 repository: https://github.com/muneeb-shahid/world_language_picker
 issue_tracker: https://github.com/muneeb-shahid/world_language_picker/issues
