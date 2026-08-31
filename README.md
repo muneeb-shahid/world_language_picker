@@ -1,7 +1,19 @@
 # World Language Picker 🌍
 
+[![pub package](https://img.shields.io/pub/v/world_language_picker.svg)](https://pub.dev/packages/world_language_picker)
+[![likes](https://img.shields.io/pub/likes/world_language_picker)](https://pub.dev/packages/world_language_picker/score)
+[![pub points](https://img.shields.io/pub/points/world_language_picker)](https://pub.dev/packages/world_language_picker/score)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 A modern, fast, zero-dependency Flutter language picker supporting **50+ world languages** with native flag emojis, instant search filtering, and clean UI.
 
+---
+
+## 📦 Pub.dev Package
+
+View and install this package directly from [pub.dev/packages/world_language_picker](https://pub.dev/packages/world_language_picker).
+
+---
 ---
 
 ## Preview 🎬
@@ -28,7 +40,7 @@ Add `world_language_picker` to your `pubspec.yaml` dependencies:
 
 ```yaml
 dependencies:
-  world_language_picker: ^1.0.0
+  world_language_picker: ^1.0.4
 
 ```
 
@@ -66,6 +78,15 @@ void openLanguagePicker(BuildContext context) async {
     print('Country Code: ${selectedLanguage.countryCode}');// e.g. ES
   }
 }
+
+```
+
+If you only need to get a native flag emoji from a 2-letter ISO country code without opening the bottom sheet, use WorldLanguagePicker.getCountryFlagEmoji():
+
+```dart
+String usFlag = WorldLanguagePicker.getCountryFlagEmoji('US'); // Returns 🇺🇸
+String pkFlag = WorldLanguagePicker.getCountryFlagEmoji('PK'); // Returns 🇵🇰
+String esFlag = WorldLanguagePicker.getCountryFlagEmoji('ES'); // Returns 🇪🇸
 
 ```
 

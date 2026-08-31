@@ -1,3 +1,9 @@
+## 1.0.4
+
+- Updated documentation with comprehensive API reference and parameter details.
+- Added `WorldLanguagePicker.getCountryFlagEmoji()` implementation example in README.
+- Added Pub.dev badges and direct package links for better navigation.
+
 ## 1.0.3
 
 - Added `flagEmoji` getter / static helper for easy flag rendering in custom UIs.
